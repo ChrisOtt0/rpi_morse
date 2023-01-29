@@ -1,7 +1,6 @@
 mod alphcon;
-use std::io::{self, Write};
-
 use alphcon::AlphCon;
+use std::io::{self, Write};
 
 fn main() {
     let port = 18;
@@ -10,13 +9,10 @@ fn main() {
 
     loop {
         let mut input = String::new();
-
-        println!("Input text: "); 
-        io::stdout().flush().unwrap();
-        io::stdin().read_line(&mut input).unwrap();
-        let input = input
-            .trim()
-            .to_lowercase();
+        print!("Input text: ");
+        let _ = io::stdout().flush();
+        io::stdin().read_line(&mut input).expect("Error reading from STDIN.");
+        let input = input.trim().to_lowercase();
         
         ac.word_space();
         for c in input.chars() {
@@ -96,40 +92,6 @@ fn main() {
                 ac.word_space();
             } 
              ac.letter_space();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
     }
 }
